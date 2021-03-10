@@ -17,7 +17,8 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strict": true,
   },
-  "include": ["src/**/*", "__tests__/**/*"]
+  "include": ["src/**/*", "__tests__/**/*", "decs.d.ts"]
 }
