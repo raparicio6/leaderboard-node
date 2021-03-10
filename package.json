@@ -36,7 +36,8 @@
     "build-watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "lint-fix": "yarn run lint --fix",
-    "test": "jest --coverage",
+    "test": "jest",
+    "coverage": "jest --coverage",
     "test-watch": "jest --watch"
   },
   "author": "Jakub Synowiec <github@jakubsynowiec.info>",
