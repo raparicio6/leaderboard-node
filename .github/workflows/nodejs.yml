@@ -16,5 +16,5 @@ jobs:
     - run: yarn build
     env:
       APP_PORT: 3000
-      FIREBASE_URL: firebase_url
+      FIREBASE_URL: https://fake-url.firebaseio.com
 
