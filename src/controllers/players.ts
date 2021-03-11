@@ -12,6 +12,10 @@ export const createPlayer = (req: express.Request, res: express.Response) => {
   const player = <Player>req.body.player;
   const playerId = uuidv4();
 
+  if (!player.wins) {
+    player.wins = 0;
+  }
+
   return db
     .ref(`${PLAYERS_REF}/${playerId}`)
     .set(player)
