@@ -1,4 +1,4 @@
-import { format, createLogger, addColors, transports, Logger } from 'winston';
+import { format, createLogger, addColors, transports } from 'winston';
 
 import { env, Env } from './env';
 
@@ -27,7 +27,7 @@ const logger = createLogger({
   defaultMeta: { service: 'leaderboard-node' },
 });
 
-const { isProduction } = env as Env;
+const { isProduction } = <Env>env;
 if (!isProduction) {
   logger.add(
     new transports.Console({
@@ -36,4 +36,4 @@ if (!isProduction) {
   );
 }
 
-export default logger as Logger;
+export default logger;

@@ -3,9 +3,17 @@ import { env, Env } from '../../env';
 
 const serviceAccount = require('./firebase-config.json');
 
-admin.initializeApp({
-  credential: admin.credential.cert(<admin.ServiceAccount>serviceAccount),
-  databaseURL: (<Env>env).firebase.url,
-});
+const { firebase, isTest } = <Env>env;
+
+if (!isTest) {
+  admin.initializeApp({
+    credential: admin.credential.cert(<admin.ServiceAccount>serviceAccount),
+    databaseURL: firebase.url,
+  });
+} else {
+  admin.initializeApp({
+    databaseURL: 'https://fake-database.firebaseio.com/',
+  });
+}
 
 export const db = admin.database();
