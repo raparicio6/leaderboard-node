@@ -1,6 +1,6 @@
-import { env, Env } from "./env";
-import logger from "./logger";
-import app from "./app";
+import { env, Env } from './env';
+import logger from './logger';
+import app from './app';
 
 const { port } = env as Env;
 

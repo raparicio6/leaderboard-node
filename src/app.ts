@@ -1,10 +1,10 @@
-import * as express from "express";
-import * as bodyparser from "body-parser";
-import * as cors from "cors";
-import * as helmet from "helmet";
+import * as express from 'express';
+import * as bodyparser from 'body-parser';
+import * as cors from 'cors';
+import * as helmet from 'helmet';
 
-import * as routes from "./routes";
-import loggerMiddleware from "./middlewares/logger";
+import * as routes from './routes';
+import loggerMiddleware from './middlewares/logger';
 
 const app: express.Application = express();
 

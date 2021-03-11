@@ -1,6 +1,6 @@
-import { format, createLogger, addColors, transports, Logger } from "winston";
+import { format, createLogger, addColors, transports, Logger } from 'winston';
 
-import { env, Env } from "./env";
+import { env, Env } from './env';
 
 const levels = {
   error: 0,
@@ -9,22 +9,22 @@ const levels = {
 };
 
 const colors = {
-  error: "red",
-  warn: "yellow",
-  info: "white",
+  error: 'red',
+  warn: 'yellow',
+  info: 'white',
 };
 
 addColors(colors);
 
 const logger = createLogger({
-  level: "info",
+  level: 'info',
   levels,
   format: format.combine(
-    format.timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" }),
+    format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
     format.colorize({ all: true }),
     format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
   ),
-  defaultMeta: { service: "leaderboard-node" },
+  defaultMeta: { service: 'leaderboard-node' },
 });
 
 const { isProduction } = env as Env;
