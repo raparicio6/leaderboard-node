@@ -17,11 +17,10 @@ export const createPlayer = (req: express.Request, res: express.Response) => {
     .then(() => res.status(201).send({ player: { id: playerId, ...player } }));
 };
 
-export const getPlayers = (_: express.Request, res: express.Response) => {
-  return db
+export const getPlayers = (_: express.Request, res: express.Response) =>
+  db
     .ref(PLAYERS_REF)
     .get()
     .then(players =>
       res.send(serializeGetPlayersResponse(<StoredPlayers>players.toJSON()))
     );
-};
