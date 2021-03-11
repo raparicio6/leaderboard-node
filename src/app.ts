@@ -4,7 +4,7 @@ import * as cors from "cors";
 import * as helmet from "helmet";
 
 import * as routes from "./routes";
-import loggerMiddleware from "./api/middlewares/logger";
+import loggerMiddleware from "./middlewares/logger";
 
 const app: express.Application = express();
 

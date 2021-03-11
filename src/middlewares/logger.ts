@@ -1,7 +1,7 @@
 import * as morgan from "morgan";
 
-import logger from "../../logger";
-import { env, Env } from "../../env";
+import logger from "../logger";
+import { env, Env } from "../env";
 
 const stream: morgan.StreamOptions = {
   write: message => logger.info(message),
