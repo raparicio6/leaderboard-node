@@ -1,7 +1,28 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
 
-import { getOsEnv, normalizePort } from "./lib/env";
+const getOsEnv = (key: string): string => {
+  if (typeof process.env[key] === "undefined") {
+    throw new Error(`Environment variable ${key} is not set.`);
+  }
+
+  return process.env[key] as string;
+};
+
+const normalizePort = (port: string): number | string | boolean => {
+  const parsedPort = parseInt(port, 10);
+  if (Number.isNaN(parsedPort)) {
+    // named pipe
+    return port;
+  }
+
+  if (parsedPort >= 0) {
+    // port number
+    return parsedPort;
+  }
+
+  return false;
+};
 
 dotenv.config({
   path: path.join(
@@ -10,7 +31,7 @@ dotenv.config({
   ),
 });
 
-export interface EnvType {
+export interface Env {
   readonly node: string;
   readonly isProduction: boolean;
   readonly isTest: boolean;
