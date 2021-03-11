@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { db, StoredPlayers } from '../services/firebase';
 import Player from '../types/player';
 import { serializeGetPlayersResponse } from '../serializers/players';
+import { PlayerInput } from '../types/inputs';
 
 const PLAYERS_REF = 'players';
 
@@ -24,3 +25,10 @@ export const getPlayers = (_: express.Request, res: express.Response) =>
     .then(players =>
       res.send(serializeGetPlayersResponse(<StoredPlayers>players.toJSON()))
     );
+
+export const updatePlayer = (req: express.Request, res: express.Response) => {
+  const player = <PlayerInput>req.body.player;
+  const storedPlayer = db.ref(PLAYERS_REF).child(player.id);
+
+  return storedPlayer.update(player).then(() => res.send(player));
+};
