@@ -12,8 +12,10 @@ if (!isTest) {
   });
 } else {
   admin.initializeApp({
-    databaseURL: 'https://fake-database.firebaseio.com/',
+    databaseURL: 'https://fake-url.firebaseio.com',
   });
 }
 
 export const db = admin.database();
+
+export * from './types';
